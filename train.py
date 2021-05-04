@@ -23,7 +23,7 @@ classifier.add(Flatten())
 
 # Adding a fully connected layer
 classifier.add(Dense(units=128, activation='relu'))
-classifier.add(Dense(units=5, activation='softmax')) # softmax for more than 2
+classifier.add(Dense(units=5, activation='softmax')) # softmax for more than 2 and no. of classes is no. of units
 
 # Compiling the CNN
 classifier.compile(optimizer='adam', loss='categorical_crossentropy', metrics=['accuracy']) # categorical_crossentropy for more than 2
@@ -56,7 +56,7 @@ test_set = test_datagen.flow_from_directory('images/test',
 
 classifier.fit_generator(
         training_set,
-        steps_per_epoch=100, # No of images in training set
+        steps_per_epoch=100, # No of images in training set/epoch
         epochs=10,
         validation_data=test_set,
         validation_steps=5)# No of images in test set
